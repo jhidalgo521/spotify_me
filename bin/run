@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require_relative"../config/environment.rb"
+
+test_start = CLI.new
+test_start.start 
+
+#test_api = API.new
+#test_api.artists
