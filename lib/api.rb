@@ -28,5 +28,12 @@ class API
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> 984f05237c7e00bfcbff8afc297094de477c1790
 end 
 
