@@ -1,12 +1,13 @@
 require "tty-prompt"
 
 class CLI   #primary job to provide user interface "gets"
-    attr_reader :api
+    attr_reader :api, :song
 
     
 
     def initialize
         @api = API.new
+        @song = Song.new
     end
 
     def start
@@ -18,7 +19,11 @@ class CLI   #primary job to provide user interface "gets"
             album_tracks = get_tracks(selected_album)
             song = select_song(album_tracks)
             #play_song(song, artist_name)
-            preview_song(song)
+            store_song(song)
+            ssong = get_song(song)
+            #binding.pry
+            preview_song(ssong)
+            previous_songs
             #binding.pry
             ans = handle_loop 
         end
@@ -49,10 +54,20 @@ class CLI   #primary job to provide user interface "gets"
 
     end 
 
+
     def select_song(songs)
         prompt = TTY::Prompt.new
         prompt.select("Pick your song?", songs)
     end
+
+    def store_song(song_name)
+        @song.store_song(song_name)
+    end
+
+    def get_song(song_name)
+        @song.get_song(song_name)
+    end
+
 
     # def play_song(song, artist)
     #     system("spotify play #{song} #{artist}")
@@ -68,6 +83,17 @@ class CLI   #primary job to provide user interface "gets"
         end
 
     end 
+
+    def previous_songs
+        songs_list = @song.previous_songs
+        puts "Would you like to see a list of previous songs selected? Y or n?"
+        ans = gets 
+        ans = ans.chomp
+        if ans !=( "n" || "N" )
+          puts songs_list
+        end
+    
+    end     
 
     def handle_loop
         puts "Would you like to choose another song? Y or n"

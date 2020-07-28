@@ -8,3 +8,4 @@ Bundler.require # make sure present at run time
 # require_relative
 require_relative "../lib/api.rb"
 require_relative "../lib/cli.rb"
+require_relative "../lib/song.rb"

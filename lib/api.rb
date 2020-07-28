@@ -1,4 +1,5 @@
 class API
+
     require 'rspotify'
     RSpotify.authenticate("c554aa9e79d5480fa5e999788429699c", "e0a80507585e40e68b9df069b8deb60a")
     # Returns artists first album track list as an array
@@ -28,12 +29,5 @@ class API
 
 
 
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> 984f05237c7e00bfcbff8afc297094de477c1790
 end 
 
